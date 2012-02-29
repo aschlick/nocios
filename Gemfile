@@ -15,12 +15,13 @@ gem 'haml-rails'
 gem 'thin'
 gem 'eventmachine'
 
-gem 'resque', :require => 'resque/server'
-gem 'resque-scheduler', :git => "https://github.com/bvandenbos/resque-scheduler.git", :branch => "v2.0"
+gem 'delayed_job_active_record'
+gem 'daemon'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'twitter-bootstrap-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
