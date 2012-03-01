@@ -4,8 +4,12 @@ class Check < ActiveRecord::Base
   
   def run
     command.constantize.perform(self.params)
-    if self.active
+    if self.active?
       self.delay(:run_at => self.frequency.minutes.from_now).run
     end
+  end
+  
+  def active?
+    host.active? || self.active
   end
 end

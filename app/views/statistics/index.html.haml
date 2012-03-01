@@ -1,0 +1,6 @@
+%form.form-horizontal
+  %fieldset
+    %legend Statistics
+    =horizontal_form_field(text_field_tag(:host_number, @hosts_count, :class => 'input-small', :disabled => true), "Monitored Host Count")
+    =horizontal_form_field(text_field_tag(:check_count, @checks_count, :class => 'input-small', :disabled => true), "Monitored Check Count")
+

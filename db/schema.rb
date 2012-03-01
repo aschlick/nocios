@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229185021) do
+ActiveRecord::Schema.define(:version => 20120301214707) do
 
   create_table "checks", :force => true do |t|
     t.string   "command"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20120229185021) do
     t.integer  "external_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.boolean  "active"
   end
 
   create_table "results", :force => true do |t|
@@ -58,6 +59,10 @@ ActiveRecord::Schema.define(:version => 20120229185021) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "results", ["check_id", "successful", "created_at"], :name => "index_results_on_check_id_and_successful_and_created_at"
+  add_index "results", ["check_id"], :name => "index_results_on_check_id"
+  add_index "results", ["successful"], :name => "index_results_on_successful"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -89,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20120229185021) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "login"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

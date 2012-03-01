@@ -58,5 +58,20 @@ Nocios::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
   
-  root :to => "home#index"
+  root :to => "statistics#index"
+  
+  match '/search' => "statistics#search", :as => :search
+  
+  resources :hosts do 
+    resources :checks
+  end
+  
+  resources :users
+  
+  resource :api, :only => [:create_host, :get_data] do 
+    collection do 
+      post 'create_host'
+      get 'get_data'
+    end
+  end
 end

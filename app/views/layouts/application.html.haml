@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title Nocios
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a{:class => "btn btn-navbar", :data => {:toggle => "collapse", :target => ".nav-collapse"}}
+            %span.icon-bar
+            %span.icon-bar
+          =link_to "Nocios", root_path, :class => 'brand'
+          -if current_user
+            .nav-collapse
+              %ul.nav
+                %li= link_to "Hosts", hosts_path
+              %ul.nav.pull-right
+                %li=link_to current_user.login, user_path(current_user), :class => 'pull-right'
+              =form_tag search_path, :class => "navbar-search pull-right" do
+                %input.search-query{:type => 'text', :placeholder => "Search"}
+
+          -else
+            .nav-collapse
+              =form_for "user", :url => user_session_path, :class => "form-inline navbar-search pull-right" do |f|
+                =f.text_field :login, nil, :class => "search-query input-medium", :placeholder => "Login"
+                =f.password_field :password,nil, :class => "search-query input-medium", :placeholder => "Password"
+                =f.submit "Sign in", :class => "btn"
+
+
+    .container
+      -flash.each do |type, msg|
+        .alert{:class => "alert-#{type}"}
+          %a.close{:data => {:dismiss => "alert"}} x
+          =msg
+      = yield
+
