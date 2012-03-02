@@ -1,0 +1,22 @@
+%table.table.table-striped{:width => '100%'}
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th Address
+      %th Actions
+  %tbody
+    -@hosts.each do |h|
+      %tr
+        %td=h.id
+        %td=h.name
+        %td=h.address
+        %td
+          =link_to "Show", host_path(h), :class => "btn btn-primary"
+          =link_to "Checks", host_checks_path(h), :class => "btn btn-info"
+          -if can? :manage, h
+            =link_to "Edit", edit_host_path(h), :class => "btn btn-warning"
+            =link_to "Destroy", host_path(h), :method => :destroy, :confirm => "Are you sure?", :class => "btn btn-danger"
+.row
+  =link_to "New Host", new_host_path, :class => "btn btn-success", :style => "float:right"
+  =will_paginate @hosts

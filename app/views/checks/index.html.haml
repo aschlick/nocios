@@ -1,0 +1,23 @@
+%table.table.table-striped{:width => '100%'}
+  %thead
+    %tr
+      %th ID
+      %th Command
+      %th Params
+      %th Active
+      %th Actions
+  %tbody
+    -@checks.each do |c|
+      %tr
+        %td=c.id
+        %td=c.command
+        %td=c.params
+        %td=c.active
+        %td
+          =link_to "Show", host_check_path(@host, c), :class => "btn btn-primary"
+          -if can? :manage, c
+            =link_to "Edit", edit_host_check_path(@host, c), :class => "btn btn-warning"
+            =link_to "Destroy", host_check_path(@host, c), :method => :destroy, :confirm => "Are you sure?", :class => "btn btn-danger"
+.row
+  =link_to "New Check", new_host_check_path(@host), :class => "btn btn-success", :style => "float:right"
+  =will_paginate @checks

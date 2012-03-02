@@ -14,6 +14,7 @@ gem 'json'
 gem 'haml-rails'
 gem 'thin'
 gem 'eventmachine'
+gem 'will_paginate'
 
 gem 'delayed_job_active_record'
 gem 'daemon'
@@ -29,6 +30,10 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'foreman'
 end
 
 gem 'jquery-rails'
