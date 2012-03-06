@@ -11,7 +11,8 @@
     =horizontal_form_field f.check_box(:active, :disabled => @disabled), "Active"
 
     .form-actions
-      =link_to "Checks", host_checks_path(@host), :class => "btn btn-info"
+      -unless @host.id.nil?
+        =link_to "Checks", host_checks_path(@host), :class => "btn btn-info"
       -unless @disabled
         =f.submit "Save", :class => 'btn btn-primary'
       -else

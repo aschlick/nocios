@@ -26,8 +26,8 @@
           -else
             .nav-collapse
               =form_for "user", :url => user_session_path, :class => "form-inline navbar-search pull-right" do |f|
-                =f.text_field :login, nil, :class => "search-query input-medium", :placeholder => "Login"
-                =f.password_field :password,nil, :class => "search-query input-medium", :placeholder => "Password"
+                =f.text_field :login, :class => "search-query input-medium", :placeholder => "Login"
+                =f.password_field :password, :class => "search-query input-medium", :placeholder => "Password"
                 =f.submit "Sign in", :class => "btn"
 
 
