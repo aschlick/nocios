@@ -63,7 +63,9 @@ Nocios::Application.routes.draw do
   match '/search' => "statistics#search", :as => :search
   
   resources :hosts do 
-    resources :checks
+    resources :checks do
+      get :graph, :on => :member
+    end
   end
   
   resources :users

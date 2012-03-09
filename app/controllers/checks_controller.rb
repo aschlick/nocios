@@ -11,6 +11,10 @@ class ChecksController < ApplicationController
     @host = Host.find(params[:host_id])
     @check = Check.find(params[:id])
     @disabled = true
+    respond_to do |format|
+      format.html
+      format.json { render :json => @check}
+    end
   end
   
   def edit
@@ -54,5 +58,19 @@ class ChecksController < ApplicationController
       flash[:error] = "Check Not Destroyed"
     end
     redirect_to host_checks_path(@host)
+  end
+  
+  def graph
+    @check = Check.find(params[:id])
+    name = @check.command
+    respond_to do |format|
+      format.json {
+	if @check.graph?
+	  render :json => {:title => name, :series => @check.graph}
+	else
+	  render :json => {:title => name, :series => @check.series}
+        end
+      }
+    end
   end
 end
