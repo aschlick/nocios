@@ -9,7 +9,6 @@ gem 'devise'
 gem 'cancan'
 
 gem 'acts-as-taggable-on'
-gem 'sqlite3'
 gem 'json'
 gem 'haml-rails'
 gem 'thin'
@@ -18,6 +17,7 @@ gem 'will_paginate'
 
 gem 'delayed_job_active_record'
 gem 'daemon'
+gem 'snmp'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,6 +34,7 @@ end
 
 group :development do
   gem 'foreman'
+  gem 'sqlite3'
 end
 
 gem 'jquery-rails'
