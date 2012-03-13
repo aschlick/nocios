@@ -19,7 +19,9 @@ class PingJob
   def self.graph(results)
     d = []
     results.each do |r|
-      d << [r.created_at.to_i*1000, r.output[:times][:avg]]
+      if r.successful
+	d << [r.created_at.to_i*1000, r.output[:times][:avg]]
+      end
     end
     {:name => "Ping", :data => d}
   end

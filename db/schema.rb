@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301220142) do
+ActiveRecord::Schema.define(:version => 20120312155209) do
 
   create_table "checks", :force => true do |t|
     t.string   "command"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120301220142) do
     t.datetime "updated_at", :null => false
     t.text     "params"
     t.boolean  "active"
+    t.string   "name"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20120301220142) do
     t.datetime "updated_at",      :null => false
     t.boolean  "active"
     t.string   "address"
+    t.string   "snmp_community"
   end
 
   create_table "results", :force => true do |t|

@@ -3,7 +3,9 @@
     %legend Check
     =f.hidden_field(:host_id, :value => @host.id)
     =horizontal_form_field f.hidden_field(:id, :value => @check.id), ""
+    =horizontal_form_field f.text_field(:name, :disabled => @disabled), "Name"
     =horizontal_form_field f.text_field(:command, :disabled => @disabled), "Command"
+    =horizontal_form_field f.text_area(:params, :disabled => @disabled, :value => @check.params, :rows => 4), "Parameters"
     =horizontal_form_field f.text_field(:frequency, :disabled => @disabled), "Frequency (min)"
     =horizontal_form_field f.text_field(:keep_for, :disabled => @disabled), "Keep For (min)"
     =horizontal_form_field f.check_box(:active, :disabled => @disabled), "Active"

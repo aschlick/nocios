@@ -2,6 +2,7 @@
   %thead
     %tr
       %th ID
+      %th Name
       %th Command
       %th Params
       %th Active
@@ -10,6 +11,7 @@
     -@checks.each do |c|
       %tr
         %td=c.id
+        %td=c.name
         %td=c.command
         %td=c.params
         %td=c.active

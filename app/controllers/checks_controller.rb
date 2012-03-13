@@ -66,9 +66,9 @@ class ChecksController < ApplicationController
     respond_to do |format|
       format.json {
 	if @check.graph?
-	  render :json => {:title => name, :series => @check.graph}
+	  render :json => {:title => "#{@check.host.name} - #{@check.name}", :series => @check.graph}
 	else
-	  render :json => {:title => name, :series => @check.series}
+	  render :json => {:title => "#{@check.host.name} - #{@check.name}", :series => @check.series}
         end
       }
     end

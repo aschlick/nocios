@@ -2,13 +2,19 @@ class Check < ActiveRecord::Base
   belongs_to :host
   has_many :results
   
+  serialize :params
+  
   def run
     if self.active?
       self.delay(:run_at => self.frequency.minutes.from_now).run
     end
     r = self.results.build
     begin
-      r.output = command.constantize.perform(self.host, :params => self.params)
+      p = nil
+      unless self.params.empty?
+	p = JSON.parse(self.params)
+      end
+      r.output = command.constantize.perform(self.host, p)
       r.successful = true
     rescue => e
       r.output = e
