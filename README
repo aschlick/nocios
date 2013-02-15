@@ -1,1 +1,10 @@
 Using SSL password of CB1D46E9D6FBDAB4F70ABAF41328AA75247B9766DD8474BC57519A9554557BA2 for testing purposes.
+
+ubuntu snmpd set up:
+1. sudo apt-get install snmpd
+2. edit /etc/snmp/snmpd.conf
+  1. change community name on sec readonly
+  2. uncomment disk / 10000
+  3. uncomment load 12 14 14
+3. edit /etc/default/snmpd. SNMPDOPTS - change 127.0.0.1 to ip address.
+4. start snmpd
