@@ -66,9 +66,9 @@ class ChecksController < ApplicationController
     respond_to do |format|
       format.json {
 	if @check.graph?
-	  render :json => {:title => "#{@check.host.name} - #{@check.name}", :series => @check.graph}
+	  render :json => {:title => "#{@check.host.name} - #{@check.name}", :series => @check.graph, :interval => @check.frequency*1000*60}
 	else
-	  render :json => {:title => "#{@check.host.name} - #{@check.name}", :series => @check.series}
+	  render :json => {:title => "#{@check.host.name} - #{@check.name}", :series => @check.series, :interval => @check.frequency*1000*60}
         end
       }
     end

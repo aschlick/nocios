@@ -14,7 +14,7 @@ gem 'haml-rails'
 gem 'thin'
 gem 'eventmachine'
 gem 'will_paginate'
-
+gem 'pg'
 gem 'delayed_job_active_record'
 gem 'daemon'
 gem 'snmp'
@@ -34,7 +34,6 @@ end
 
 group :development do
   gem 'foreman'
-  gem 'sqlite3'
 end
 
 gem 'jquery-rails'

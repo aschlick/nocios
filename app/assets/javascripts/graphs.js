@@ -26,6 +26,7 @@ function createSingleLineChart(data) {
     series: [{
       name: data.series.name,
       data: data.series.data,
+      pointInterval:data.interval,
       tooltip: {
 	valueDecimals:2
       }

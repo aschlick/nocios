@@ -17,9 +17,11 @@ class SnmpJob
     d = []
     results.each do |r|
       if r.successful
-	d << [r.created_at.to_i*1000,r.output.first[:value].to_s.to_f]
+	if r.output.kind_of?(Array)
+	  d << [r.created_at.to_i*1000,r.output.first[:value].to_s.to_f]
+	end
       end
     end
-    {:name => results.first.output.first[:name], :data => d}
+    {:name => results.first.check.name, :data => d}
   end
 end
